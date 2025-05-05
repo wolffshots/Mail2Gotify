@@ -54,7 +54,7 @@ namespace Mail2Gotify.Services
             X509Certificate x509Certificate = null;
             if (certFileInfo == null)
                 x509Certificate = CreateX509Certificate2();   
-            if (certType == "PEM" && !string.IsNullOrWhiteSpace(certPassword))            
+            else if (certType == "PEM" && !string.IsNullOrWhiteSpace(certPassword))            
                 x509Certificate = X509Certificate2.CreateFromEncryptedPemFile(certFileInfo.FullName, certPassword, keyFileInfo?.FullName);            
             else if (certType == "PEM")            
                 x509Certificate = X509Certificate2.CreateFromPemFile(certFileInfo.FullName, keyFileInfo?.FullName);
